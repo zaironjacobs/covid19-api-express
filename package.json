@@ -1,0 +1,22 @@
+{
+  "name": "covid19-api",
+  "version": "1.0.0",
+  "description": "COVID-19 API built with Express.",
+  "scripts": {
+    "start": "nodemon src/app.js"
+  },
+  "keywords": [
+    "covid19",
+    "api"
+  ],
+  "author": "Zairon Jacobs <zaironjacobs@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.6.3",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
