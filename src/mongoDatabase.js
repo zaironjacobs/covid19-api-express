@@ -13,6 +13,8 @@ class MongoDatabase {
      * Return a country
      *
      * @param {string} name
+     *
+     * @return {object}
      */
     async getCountry(name) {
         return await this.collection.findOne({'name': name});
@@ -21,6 +23,7 @@ class MongoDatabase {
     /**
      * Return all countries
      *
+     * @return {array}
      */
     async getAllCountries() {
         return await this.collection.find({}).toArray();
@@ -38,13 +41,6 @@ class MongoDatabase {
         } catch {
             console.log('Could not connect to MongoDB database');
         }
-    }
-
-    /**
-     * Close the client
-     */
-    async close() {
-        await this.client.close();
     }
 }
 

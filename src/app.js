@@ -4,10 +4,14 @@ const MongoDatabase = require('./mongoDatabase.js');
 
 
 const app = express();
+
 const mongoDatabase = new MongoDatabase();
+(async () => {
+    await mongoDatabase.connect();
+})();
+
 
 app.get('/country', async (req, res) => {
-    await mongoDatabase.connect();
     try {
         const name = req.query.name;
         const country = await mongoDatabase.getCountry(name);
@@ -16,11 +20,9 @@ app.get('/country', async (req, res) => {
     } catch (err) {
         res.send({'Error': 'Could not find country'});
     }
-    await mongoDatabase.close();
 });
 
 app.get('/countries', async (req, res) => {
-    await mongoDatabase.connect();
     try {
         const countries = await mongoDatabase.getAllCountries();
         countries.forEach((country) => {
@@ -30,7 +32,6 @@ app.get('/countries', async (req, res) => {
     } catch (err) {
         res.send({'Error': 'Could not find countries'});
     }
-    await mongoDatabase.close();
 });
 
 app.listen(process.env.PORT);
