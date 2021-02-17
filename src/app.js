@@ -34,4 +34,16 @@ app.get('/countries', async (req, res) => {
     }
 });
 
+app.get('/articles', async (req, res) => {
+    try {
+        const articles = await mongoDatabase.getAllArticles();
+        articles.forEach((article) => {
+            delete article['_id'];
+        });
+        res.send(articles);
+    } catch (err) {
+        res.send({'Error': 'Could not find articles'});
+    }
+});
+
 app.listen(process.env.PORT);

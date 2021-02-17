@@ -17,7 +17,7 @@ class MongoDatabase {
      * @return {object}
      */
     async getCountry(name) {
-        return await this.collection.findOne({'name': name});
+        return await this.countryCollection.findOne({'name': name});
     }
 
     /**
@@ -26,7 +26,16 @@ class MongoDatabase {
      * @return {array}
      */
     async getAllCountries() {
-        return await this.collection.find({}).toArray();
+        return await this.countryCollection.find({}).toArray();
+    }
+
+    /**
+     * Return all articles
+     *
+     * @return {array}
+     */
+    async getAllArticles() {
+        return await this.articleCollection.find({}).toArray();
     }
 
     /**
@@ -37,7 +46,8 @@ class MongoDatabase {
         try {
             await this.client.connect();
             this.db = await this.client.db(process.env.DATABASE);
-            this.collection = await this.db.collection(process.env.COLLECTION);
+            this.countryCollection = await this.db.collection(process.env.COLLECTION_COUNTRY);
+            this.articleCollection = await this.db.collection(process.env.COLLECTION_ARTICLE);
         } catch {
             console.log('Could not connect to MongoDB database');
         }
