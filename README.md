@@ -25,10 +25,9 @@ PORT=8050
 
 To use:
 ```
-$ npm i pm2 -g
-$ cd ~/covid19-api-express
+$ cd covid19-api-express
 $ npm install
-$ npm run prod
+$ npm run start
 ```
 
 ### Endpoints
