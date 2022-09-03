@@ -3,16 +3,14 @@ COVID-19 API
 COVID-19 API built with [Express](https://github.com/expressjs/express).
 
 ## Dependencies
+
 - [COVID-19 Data Fetcher](https://github.com/zaironjacobs/covid19-data-fetcher)
 
-### Download
-```
-$ git clone https://github.com/zaironjacobs/covid19-api-express
-```
-
 ### Usage
+
 Copy the file .env.example to .env and fill in the environment variables.
 A local connection example:
+
 ```
 DATABASE=covid19
 COLLECTION_COUNTRY=country
@@ -23,15 +21,16 @@ PORT=8050
 ```
 
 To use:
+
 ```
-$ cd covid19-api-express
-$ npm install
-$ npm run start
+npm install
+npm run start
 ```
 
 ### Endpoints
 
-/country?name=Netherlands:
+/countries/Netherlands:
+
 ```
 {
     "name": "Netherlands",
@@ -44,6 +43,7 @@ $ npm run start
 ```
 
 /countries:
+
 ```
 [
     {
@@ -77,6 +77,7 @@ $ npm run start
 ```
 
 /articles:
+
 ```
 [
     {
